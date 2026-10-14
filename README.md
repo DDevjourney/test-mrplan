@@ -21,9 +21,9 @@ Una reserva puede estar `pendiente`, `confirmada` o `cancelada`.
 | Base de datos | MySQL / MariaDB, accedida con PDO |
 | Vistas | Twig |
 | Frontend | HTML semántico, CSS responsive y JavaScript vanilla |
-| Tests | PHPUnit |
+| Tests | PHPUnit (quizás) |
 | Dependencias | Composer (Twig, PHPUnit y autoload PSR-4) |
-| Despliegue | Docker en Render, con MySQL en Aiven |
+| Despliegue | Aún por determinar |
 
 ## Estado
 
