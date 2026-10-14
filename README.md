@@ -19,6 +19,7 @@ Una reserva puede estar `pendiente`, `confirmada` o `cancelada`.
 |---|---|
 | Backend | PHP 8.4 nativo, sin framework |
 | Base de datos | MySQL / MariaDB, accedida con PDO |
+| Entorno local | WAMP (Apache, PHP y MySQL en Windows) |
 | Vistas | Twig |
 | Frontend | HTML semántico, CSS responsive y JavaScript vanilla |
 | Tests | PHPUnit (quizás) |

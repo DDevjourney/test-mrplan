@@ -1,0 +1,7 @@
+/vendor/
+/.env
+/var/
+/.phpunit.cache/
+.idea/
+.vscode/
+HOJA_DE_RUTA.md
