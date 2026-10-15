@@ -1,7 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
-require __DIR__ . '/../vendor/autoload.php';
+$config = require __DIR__ . '/../src/bootstrap.php';
+$pdo = App\Database::connect($config);
 
-echo App\Config::hola();
+echo $pdo->query('SELECT COUNT(*) FROM reserva')->fetchColumn();
