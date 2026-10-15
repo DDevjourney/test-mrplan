@@ -26,6 +26,18 @@ Una reserva puede estar `pendiente`, `confirmada` o `cancelada`.
 | Dependencias | Composer (Twig, PHPUnit y autoload PSR-4) |
 | Despliegue | Aún por determinar |
 
+## Pruebas realizadas
+
+### Base de datos (importación de `database/schema.sql`)
+
+Tras importar el esquema y los datos de ejemplo, comprobé estas consultas en phpMyAdmin. Todas dieron el resultado esperado.
+
+| Consulta | Resultado esperado | Resultado |
+|---|---|---|
+| `SELECT estado, COUNT(*) FROM reserva GROUP BY estado;` | 6 pendientes, 6 confirmadas y 3 canceladas | Correcto |
+| `SELECT COUNT(*) FROM reserva_evento;` | 26 eventos | Correcto |
+| `SELECT * FROM reserva WHERE nombre_huesped LIKE '%garcia%';` | 4 filas (la colación ignora los acentos) | Correcto |
+
 ## Estado
 
 En desarrollo. El resto del README (instalación local, enlace al deploy, decisiones de diseño, mejoras pendientes y escalabilidad) se añadirá al terminar el proyecto.
