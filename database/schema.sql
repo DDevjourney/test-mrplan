@@ -16,7 +16,7 @@ CREATE TABLE reserva (
     estado ENUM('pendiente', 'confirmada', 'cancelada') NOT NULL DEFAULT 'pendiente',
     importe DECIMAL(10, 2) NOT NULL,
     notas TEXT NULL,
-    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_estado (estado),
     INDEX idx_fechas (fecha_entrada, fecha_salida),
     INDEX idx_nombre (nombre_huesped),
@@ -31,11 +31,14 @@ CREATE TABLE reserva_evento (
     reserva_id INT NOT NULL,
     tipo VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_evento_reserva (reserva_id, fecha_creacion),
     CONSTRAINT fk_evento_reserva FOREIGN KEY (reserva_id) REFERENCES reserva(id) ON DELETE CASCADE
     )
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Esta tabla funciona como historial de eventos de cada reserva. 
+
 -- Datos de ejemplo
 -- ============================================================
 
