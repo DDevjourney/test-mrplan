@@ -16,18 +16,18 @@ function cargarEnv(string $ruta): void
     }
 
     foreach (file($ruta, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $linea) {
-        // 1. saltar las líneas que empiecen por '#'
-        // 2. partir por el PRIMER '=' con explode('=', $linea, 2) y hacer trim a clave y valor
-        // 3. si getenv($clave) === false, hacer putenv("$clave=$valor")
 
         if (str_starts_with($linea, '#')) {
-            continue;
+            continue; // saltar linea #
         }
 
-        [$clave, $valor] = explode('=', $linea, 2);
+        [$clave, $valor] = explode('=', $linea, 2); // separamos el string con explode a partir de = y después, trim
         $clave = trim($clave);
-        $valor = trim($valor);
+        $valor = trim($valor); 
 
+        // Solo definimos la variable si no existe ya en el entorno: así las variables reales
+        // del sistema (p. ej. las de Render en producción) tienen prioridad sobre el .env.
+        // Se compara con === false porque una variable definida pero vacía (DB_PASS=) devuelve "".
         if (getenv($clave) === false) {
             putenv("$clave=$valor");
         }   
